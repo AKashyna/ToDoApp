@@ -1,0 +1,5 @@
+# Android
+android-client/app/google-services.json
+# Spring secrets
+java-backend/src/main/resources/application.properties
+java-backend/src/main/resources/application.yml
