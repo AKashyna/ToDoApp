@@ -24,13 +24,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidClientTheme {
-                val isLoggedIn = remember { mutableStateOf(false) }
+                var isLoggedIn by remember { mutableStateOf(false) }
+                var token by remember { mutableStateOf("") }
 
-                if (isLoggedIn.value) {
-                    MainScreen()
+                if (isLoggedIn) {
+                    MainScreen(token)
                 } else {
-                    LoginScreen { token ->
-                        isLoggedIn.value = true
+                    LoginScreen { receivedToken ->
+                        token = receivedToken
+                        isLoggedIn = true
                     }
                 }
             }

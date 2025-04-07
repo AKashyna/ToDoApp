@@ -44,10 +44,10 @@ fun LoginScreen(onTokenReceived: (String) -> Unit) {
                 BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                     .setSupported(true)
                     .setServerClientId("649303745201-l6p7r6u66rr4mn8v142n3d5068eg0d9q.apps.googleusercontent.com")
-                    .setFilterByAuthorizedAccounts(false) // 👈 zezwala na logowanie każdego
+                    .setFilterByAuthorizedAccounts(false) //  zezwala na logowanie każdego
                     .build()
             )
-            .setAutoSelectEnabled(false) // 👈 ważne: wyłącza autowybór, który czasem blokuje One Tap
+            .setAutoSelectEnabled(false) //  wyłącza autowybór, który czasem blokuje One Tap
             .build()
     }
 
@@ -124,16 +124,16 @@ suspend fun sendTokenToBackend(idToken: String): Boolean {
 
     val request = Request.Builder()
         .url("http://10.0.2.2:8080/api/auth/google")
-        .addHeader("Authorization", "Bearer $idToken") // 👈 najważniejsze!
+        .addHeader("Authorization", "Bearer $idToken") //
         .post("".toRequestBody("application/json".toMediaType())) // pusty body, ale POST
         .build()
 
     return try {
         val response = client.newCall(request).execute()
-        Log.d("LoginScreen", "🛰️ Response code: ${response.code}")
+        Log.d("LoginScreen", "🛰 Response code: ${response.code}")
         response.isSuccessful
     } catch (e: Exception) {
-        Log.e("LoginScreen", "❌ Błąd wysyłania tokena: ${e.message}")
+        Log.e("LoginScreen", " Błąd wysyłania tokena: ${e.message}")
         false
     }
 }

@@ -2,7 +2,11 @@ package com.todoapp.backend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 @Entity
 @Table(name = "todos")
 public class Todo {
