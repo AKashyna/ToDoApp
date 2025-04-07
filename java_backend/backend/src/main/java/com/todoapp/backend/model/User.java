@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users") //  to kluczowe!
+@Table(name = "users") // wazne bez tego sie wywala
 public class User {
     @Id
     private String id;

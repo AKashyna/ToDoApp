@@ -37,7 +37,7 @@ fun MainScreen(token: String) {
                 title = { Text("ToDoApp") },
                 actions = {
                     IconButton(onClick = {
-                        Log.d("MainScreen", "🔄 Kliknięto odświeżanie")
+                        Log.d("MainScreen", " Kliknięto odświeżanie")
                         refreshTrigger = !refreshTrigger
                     }) {
                         Icon(Icons.Default.Refresh, contentDescription = "Odśwież")
@@ -118,7 +118,7 @@ fun TodoListScreen(
     var loading by remember { mutableStateOf(true) }
 
     LaunchedEffect(token, refreshTrigger) {
-        Log.d("TodoList", "📥 Pobieranie zadań...")
+        Log.d("TodoList", " Pobieranie zadań...")
 
         try {
             todos = RetrofitInstance.api.getTodos("Bearer $token")
